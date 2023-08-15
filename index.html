@@ -104,8 +104,13 @@
                 input.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 300); // Delay ensures the keyboard has time to pop up
         }
+        function resetScrollPosition() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-        document.getElementById('inputSymbol').addEventListener('focus', ensureInputVisibility);
+        const inputElement = document.getElementById('inputSymbol');
+        inputElement.addEventListener('focus', ensureInputVisibility);
+        inputElement.addEventListener('blur', resetScrollPosition);
 
         function checkSymbol() {
             const symbol = document.getElementById('inputSymbol').value;
